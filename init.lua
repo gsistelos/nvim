@@ -4,6 +4,7 @@ vim.call('plug#begin')
 
 Plug('github/copilot.vim')
 Plug('preservim/nerdtree')
+Plug('vim-airline/vim-airline')
 
 -- Theme
 Plug('dracula/vim')
