@@ -1,6 +1,6 @@
 -- Help: https://github.com/nvim-treesitter/nvim-treesitter
 
-require('nvim-treesitter.configs').setup {
+require('nvim-treesitter.configs').setup({
 	ensure_installed = { 'c', 'lua', 'vim', 'vimdoc', 'query' },
 
 	sync_install = false,
@@ -13,4 +13,4 @@ require('nvim-treesitter.configs').setup {
 
 		additional_vim_regex_highlighting = false,
 	},
-}
+})
