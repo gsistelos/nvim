@@ -12,6 +12,9 @@ Plug('dracula/vim')
 -- Git diff
 Plug('airblade/vim-gitgutter')
 
+-- Formatter
+Plug('mhartington/formatter.nvim')
+
 -- Language parser; Syntax highlighting
 Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
 
