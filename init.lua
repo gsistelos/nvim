@@ -3,7 +3,6 @@ local Plug = vim.fn['plug#']
 vim.call('plug#begin')
 
 Plug('github/copilot.vim')
-Plug('preservim/nerdtree')
 Plug('vim-airline/vim-airline')
 
 -- Theme
@@ -12,11 +11,11 @@ Plug('dracula/vim')
 -- Git diff
 Plug('airblade/vim-gitgutter')
 
--- Formatter
-Plug('mhartington/formatter.nvim')
-
 -- Language parser; Syntax highlighting
 Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
+
+-- LSP support
+Plug('neovim/nvim-lspconfig')
 
 -- LSP server manager
 Plug('williamboman/mason.nvim')
@@ -33,9 +32,6 @@ Plug('hrsh7th/nvim-cmp')
 Plug('hrsh7th/cmp-vsnip')
 Plug('hrsh7th/vim-vsnip')
 
--- LSP support
-Plug('neovim/nvim-lspconfig')
-
 vim.call('plug#end')
 
 -- Keymaps
@@ -44,5 +40,6 @@ require('keymaps')
 -- Vim settings
 vim.cmd('set nu')
 
-vim.cmd('set tabstop=2')
-vim.cmd('set shiftwidth=2')
+vim.cmd('set tabstop=4')
+vim.cmd('set shiftwidth=4')
+vim.cmd('set expandtab')
