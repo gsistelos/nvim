@@ -11,6 +11,13 @@ Plug('dracula/vim')
 -- Git diff
 Plug('airblade/vim-gitgutter')
 
+-- Fuzzy finder dependencies
+Plug('nvim-lua/plenary.nvim')
+Plug('nvim-telescope/telescope-fzf-native.nvim', {['do'] = 'make'})
+
+-- Fuzzy finder
+Plug('nvim-telescope/telescope.nvim')
+
 -- Language parser; Syntax highlighting
 Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
 
