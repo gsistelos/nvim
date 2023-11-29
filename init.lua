@@ -1,52 +1,73 @@
-local Plug = vim.fn['plug#']
+-- Set lazy.nvim path
+local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
-vim.call('plug#begin')
+-- Ensure lazy.nvim is installed
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({
+        'git',
+        'clone',
+        '--filter=blob:none',
+        'https://github.com/folke/lazy.nvim.git',
+        '--branch=stable', -- Latest stable release
+        lazypath
+    })
+end
 
-Plug('github/copilot.vim')
-Plug('vim-airline/vim-airline')
+-- Add lazy.nvim to runtimepath
+vim.opt.rtp:prepend(lazypath)
 
--- Theme
-Plug('dracula/vim')
+-- Plugins
+local plugins = {
+    'dracula/vim', -- Dracula theme
+    'github/copilot.vim', -- Copilot
+    'lewis6991/gitsigns.nvim', -- Git signs
+    'williamboman/mason.nvim', -- Package manager
+    'williamboman/mason-lspconfig.nvim', -- Mason and LSP bridge
+    'neovim/nvim-lspconfig', -- LSP
+    {
+        'nvim-lualine/lualine.nvim', -- Status line
+        dependencies = { 'nvim-tree/nvim-web-devicons' }
+    },
+    {
+        'stevearc/oil.nvim', -- File explorer
+        dependencies = { 'nvim-tree/nvim-web-devicons' }
+    },
+    {
+        'nvim-treesitter/nvim-treesitter', -- Syntax highlighting
+        build = ':TSUpdate'
+    },
+    {
+        'nvim-telescope/telescope.nvim', -- Fuzzy finder
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+            {
+                'nvim-telescope/telescope-fzf-native.nvim',
+                build = 'make'
+            }
+        }
+    },
+    {
+        'hrsh7th/nvim-cmp', -- Autocompletion
+        dependencies = {
+            'hrsh7th/cmp-nvim-lsp',
+            'hrsh7th/cmp-buffer',
+            'hrsh7th/cmp-path',
+            'hrsh7th/cmp-cmdline',
+            'L3MON4D3/LuaSnip', -- Snippets
+            'saadparwaiz1/cmp_luasnip'
+        }
+    }
+}
 
--- Git diff
-Plug('airblade/vim-gitgutter')
+local opts = { }
 
--- Fuzzy finder dependencies
-Plug('nvim-lua/plenary.nvim')
-Plug('nvim-telescope/telescope-fzf-native.nvim', {['do'] = 'make'})
-
--- Fuzzy finder
-Plug('nvim-telescope/telescope.nvim')
-
--- Language parser; Syntax highlighting
-Plug('nvim-treesitter/nvim-treesitter', {['do'] = ':TSUpdate'})
-
--- LSP support
-Plug('neovim/nvim-lspconfig')
-
--- LSP server manager
-Plug('williamboman/mason.nvim')
-Plug('williamboman/mason-lspconfig.nvim')
-
--- LSP completion
-Plug('hrsh7th/cmp-nvim-lsp')
-Plug('hrsh7th/cmp-buffer')
-Plug('hrsh7th/cmp-path')
-Plug('hrsh7th/cmp-cmdline')
-Plug('hrsh7th/nvim-cmp')
-
--- LSP snippets
-Plug('hrsh7th/cmp-vsnip')
-Plug('hrsh7th/vim-vsnip')
-
-vim.call('plug#end')
+require("lazy").setup(plugins, opts)
 
 -- Keymaps
 require('keymaps')
 
 -- Vim settings
-vim.cmd('set nu')
+require('vimsettings')
 
-vim.cmd('set tabstop=4')
-vim.cmd('set shiftwidth=4')
-vim.cmd('set expandtab')
+-- Colors
+require('colors')

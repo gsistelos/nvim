@@ -1,16 +1,9 @@
--- Help: https://github.com/nvim-treesitter/nvim-treesitter
-
 require('nvim-treesitter.configs').setup({
     ensure_installed = { 'c', 'lua', 'vim', 'vimdoc', 'query', 'javascript' },
-
     sync_install = false,
-
-    -- Install new parsers with :TSInstall
-    auto_install = false,
-
+    auto_install = false, -- Install new parsers with :TSInstall
     highlight = {
         enable = true,
-
-        additional_vim_regex_highlighting = false,
-    },
+        additional_vim_regex_highlighting = false
+    }
 })
