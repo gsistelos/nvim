@@ -1,1 +1,3 @@
-require('oil').setup()
+require('oil').setup({
+    keymaps = { ["<C-h>"] = "actions.toggle_hidden" }
+})
