@@ -21,6 +21,7 @@ local plugins = {
     'dracula/vim', -- Dracula theme
     'github/copilot.vim', -- Copilot
     'lewis6991/gitsigns.nvim', -- Git signs
+    'tpope/vim-commentary', -- Multi-line commenting
     'williamboman/mason.nvim', -- Package manager
     'williamboman/mason-lspconfig.nvim', -- Mason and LSP bridge
     'neovim/nvim-lspconfig', -- LSP
