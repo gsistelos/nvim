@@ -15,18 +15,36 @@ cmp.setup({
         end
     },
     mapping = cmp.mapping.preset.insert({
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-e>'] = cmp.mapping.close(),
+        ['<C-e>'] = cmp.mapping.abort(),
         ['<CR>'] = cmp.mapping.confirm({ select = true })
     }),
-    sources = {
+    sources = cmp.config.sources({
         { name = 'nvim_lsp' },
-        { name = 'buffer' },
         { name = 'path' },
-        { name = 'cmdline' },
         { name = 'luasnip' },
         { name = 'luasnip_choice' }
+    }, {
+        { name = 'buffer' }
+    })
+})
+
+cmp.setup.cmdline({ '/', '?' }, {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = {
+        { name = 'buffer' }
     }
+})
+
+cmp.setup.cmdline(':', {
+    mapping = cmp.mapping.preset.cmdline(),
+    sources = cmp.config.sources({
+        { name = 'path' }
+    }, {
+        { name = 'cmdline' }
+    })
 })
 
 local lspconfig = require('lspconfig')
