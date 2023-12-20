@@ -9,5 +9,6 @@ vim.cmd('set expandtab')
 -- Visual whitespaces
 vim.cmd('set listchars=space:•,tab:__,eol:⏎')
 
--- Format on save
-vim.cmd('autocmd BufWritePre * lua vim.lsp.buf.format()')
+-- Format on save with :W
+vim.cmd('command! Format :lua vim.lsp.buf.format()')
+vim.cmd('command! W :w | Format')
