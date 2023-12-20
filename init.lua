@@ -22,9 +22,11 @@ local plugins = {
     'github/copilot.vim', -- Copilot
     'lewis6991/gitsigns.nvim', -- Git signs
     'tpope/vim-commentary', -- Multi-line commenting
+    'rust-lang/rust.vim', -- Rust
     'williamboman/mason.nvim', -- Package manager
     'williamboman/mason-lspconfig.nvim', -- Mason and LSP bridge
     'neovim/nvim-lspconfig', -- LSP
+    'simrat39/rust-tools.nvim', -- Rust LSP integration
     {
         'nvim-lualine/lualine.nvim', -- Status line
         dependencies = { 'nvim-tree/nvim-web-devicons' }
