@@ -1,5 +1,5 @@
 require('nvim-treesitter.configs').setup({
-    ensure_installed = { 'c', 'lua', 'vim', 'vimdoc', 'query', 'javascript', 'bash', 'python' },
+    ensure_installed = { 'c', 'lua', 'vim', 'vimdoc', 'query', 'javascript', 'bash', 'python', 'rust' },
     sync_install = false,
     auto_install = false, -- Install new parsers with :TSInstall
     highlight = {
