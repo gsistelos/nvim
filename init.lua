@@ -18,16 +18,16 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Plugins
 local plugins = {
-    'dracula/vim', -- Dracula theme
-    'github/copilot.vim', -- Copilot
-    'lewis6991/gitsigns.nvim', -- Git signs
-    'williamboman/mason.nvim', -- Package manager
-    'williamboman/mason-lspconfig.nvim', -- Mason and LSP bridge
-    'neovim/nvim-lspconfig', -- LSP
-    {
-        'nvim-lualine/lualine.nvim', -- Status line
-        dependencies = { 'nvim-tree/nvim-web-devicons' }
-    },
+    'dracula/vim',                         -- Dracula theme
+    'github/copilot.vim',                  -- Copilot
+    'lewis6991/gitsigns.nvim',             -- Git signs
+    'neovim/nvim-lspconfig',               -- LSP
+    'nvim-lua/plenary.nvim',               -- Dependency library
+    'nvim-lualine/lualine.nvim',           -- Status line
+    'nvim-tree/nvim-web-devicons',         -- Icons
+    'tpope/vim-commentary',                -- Commenting
+    'williamboman/mason.nvim',             -- Package manager
+    'williamboman/mason-lspconfig.nvim',   -- Mason and LSP bridge
     {
         'nvim-treesitter/nvim-treesitter', -- Syntax highlighting
         build = ':TSUpdate'
@@ -35,7 +35,6 @@ local plugins = {
     {
         'nvim-telescope/telescope.nvim', -- Fuzzy finder
         dependencies = {
-            'nvim-lua/plenary.nvim',
             {
                 'nvim-telescope/telescope-fzf-native.nvim',
                 build = 'make'

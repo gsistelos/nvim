@@ -11,4 +11,4 @@ vim.cmd('set listchars=space:•,tab:__,eol:⏎')
 
 -- Format on save with :W
 vim.cmd('command! Format :lua vim.lsp.buf.format()')
-vim.cmd('command! W :w | Format')
+vim.cmd('command! W :exec "Format" | w')
