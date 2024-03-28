@@ -1,6 +1,6 @@
 require('mason').setup()
 
-local servers = { 'lua_ls', 'bashls', 'clangd', 'tsserver', 'pylsp', 'rust_analyzer', 'gopls' }
+local servers = { 'lua_ls', 'bashls', 'clangd', 'tsserver', 'eslint', 'pylsp', 'rust_analyzer', 'gopls', 'html', 'cssls' }
 
 require('mason-lspconfig').setup({
     ensure_installed = servers
