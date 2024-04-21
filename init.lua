@@ -42,6 +42,10 @@ local plugins = {
         }
     },
     {
+        'ThePrimeagen/harpoon',
+        branch = 'harpoon2'
+    },
+    {
         'hrsh7th/nvim-cmp', -- Autocompletion
         dependencies = {
             'hrsh7th/cmp-nvim-lsp',
@@ -56,7 +60,9 @@ local plugins = {
 
 local opts = {}
 
-require("lazy").setup(plugins, opts)
+vim.g.mapleader = ' '
+
+require('lazy').setup(plugins, opts)
 
 -- Keymaps
 require('keymaps')
