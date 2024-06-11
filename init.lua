@@ -18,14 +18,13 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Plugins
 local plugins = {
-    'dracula/vim',                         -- Dracula theme
+    'folke/tokyonight.nvim',               -- Colorscheme
     'github/copilot.vim',                  -- Copilot
     'lewis6991/gitsigns.nvim',             -- Git signs
     'neovim/nvim-lspconfig',               -- LSP
     'nvim-lua/plenary.nvim',               -- Dependency library
     'nvim-lualine/lualine.nvim',           -- Status line
     'nvim-tree/nvim-web-devicons',         -- Icons
-    'tpope/vim-commentary',                -- Commenting
     'williamboman/mason.nvim',             -- Package manager
     'williamboman/mason-lspconfig.nvim',   -- Mason and LSP bridge
     {

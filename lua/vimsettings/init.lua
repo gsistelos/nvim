@@ -1,5 +1,6 @@
 -- Line numbers
 vim.cmd('set nu')
+vim.cmd('set relativenumber')
 
 -- Tab
 vim.cmd('set tabstop=4')
