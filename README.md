@@ -3,7 +3,7 @@
 ## Install
 
 ```bash
-git clone depth=1 https://github.com/gsistelos/nvim.git ~/.config/nvim
+git clone --depth=1 https://github.com/gsistelos/nvim.git ~/.config/nvim
 ```
 
 ## Dependencies
