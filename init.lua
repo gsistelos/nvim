@@ -18,9 +18,10 @@ vim.opt.rtp:prepend(lazypath)
 
 -- Plugins
 local plugins = {
-    'folke/tokyonight.nvim',               -- Colorscheme
+    'rose-pine/neovim',                    -- Colorscheme
     'github/copilot.vim',                  -- Copilot
     'lewis6991/gitsigns.nvim',             -- Git signs
+    'norcalli/nvim-colorizer.lua',         -- Color highlighting
     'neovim/nvim-lspconfig',               -- LSP
     'nvim-lua/plenary.nvim',               -- Dependency library
     'nvim-lualine/lualine.nvim',           -- Status line
