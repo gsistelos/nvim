@@ -7,10 +7,9 @@ return {
     },
     config = function()
         local cmp = require('cmp')
-
         cmp.setup({
             completion = { completeopt = 'menu,menuone,noinsert' },
-            mapping = cmp.mapping.preset.insert {
+            mapping = cmp.mapping.preset.insert({
                 -- [p]revious
                 ['<C-p>'] = cmp.mapping.select_prev_item(),
                 -- [n]ext
@@ -29,7 +28,7 @@ return {
                 -- Manually trigger a completion from nvim-cmp
                 -- [s]how
                 ['<C-s>'] = cmp.mapping.complete(),
-            },
+            }),
             sources = {
                 { name = 'nvim_lsp' },
                 { name = 'path' },

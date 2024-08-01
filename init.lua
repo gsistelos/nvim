@@ -23,19 +23,36 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
-    'github/copilot.vim',               -- Copilot
-    'tpope/vim-sleuth',                 -- Detect tabstop and shiftwidth automatically
+    'github/copilot.vim', -- Copilot
+    {                     -- Color highlighting
+        'norcalli/nvim-colorizer.lua',
+        init = function()
+            vim.cmd.set('termguicolors')
+        end,
+    },
+    { -- Status line
+        'nvim-lualine/lualine.nvim',
+        opts = {},
+    },
+    {                    -- Colorscheme
+        'rose-pine/neovim',
+        priority = 9999, -- Make sure to load this before all the other start plugins
+        init = function()
+            vim.cmd.colorscheme('rose-pine')
+        end,
+    },
+    { -- Syntax highlighting, edit and indent
+        'nvim-treesitter/nvim-treesitter',
+        build = ':TSUpdate',
+    },
+    'tpope/vim-sleuth',                -- Detect tabstop and shiftwidth automatically
 
-    require('plugins.colorscheme'),     -- Colorscheme
-    require('plugins.gitsigns'),        -- Git stuff
-    require('plugins.harpoon'),         -- Blazingly fast
-    require('plugins.lualine'),         -- Status line
-    require('plugins.nvim-cmp'),        -- Autocomplete
-    require('plugins.nvim-colorizer'),  -- Color highlighting
-    require('plugins.nvim-lspconfig'),  -- LSP
-    require('plugins.nvim-treesitter'), -- Highlighting, edit and navigate code
-    require('plugins.telescope'),       -- Fuzzy finder
-    require('plugins.which-key'),       -- Show keymaps
+    require('plugins.gitsigns'),       -- Git stuff
+    require('plugins.harpoon'),        -- Blazingly fast
+    require('plugins.nvim-cmp'),       -- Autocomplete
+    require('plugins.nvim-lspconfig'), -- LSP
+    require('plugins.telescope'),      -- Fuzzy finder
+    require('plugins.which-key'),      -- Show keymaps
 }
 
 local opts = {}
