@@ -29,7 +29,7 @@ local plugins = {
     {
         'lukas-reineke/indent-blankline.nvim', -- Indent lines
         main = 'ibl',
-        opts = {},
+        opts = { scope = { enabled = false } },
     },
     {
         'nvim-lualine/lualine.nvim', -- Status line
