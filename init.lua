@@ -24,28 +24,38 @@ vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
     'github/copilot.vim', -- Copilot
-    {                     -- Color highlighting
-        'norcalli/nvim-colorizer.lua',
-        init = function()
-            vim.cmd.set('termguicolors')
-        end,
-    },
-    { -- Status line
-        'nvim-lualine/lualine.nvim',
+    'tpope/vim-sleuth',   -- Detect tabstop and shiftwidth automatically
+
+    {
+        'lukas-reineke/indent-blankline.nvim', -- Indent lines
+        main = 'ibl',
         opts = {},
     },
-    {                    -- Colorscheme
-        'rose-pine/neovim',
-        priority = 9999, -- Make sure to load this before all the other start plugins
+    {
+        'nvim-lualine/lualine.nvim', -- Status line
+        opts = {},
+    },
+    {
+        'rose-pine/neovim', -- Colorscheme
+        priority = 9999,    -- Make sure to load this before all the other start plugins
         init = function()
             vim.cmd.colorscheme('rose-pine')
         end,
     },
-    { -- Syntax highlighting, edit and indent
-        'nvim-treesitter/nvim-treesitter',
+    {
+        'norcalli/nvim-colorizer.lua', -- Color highlighting
+        init = function()
+            vim.cmd.set('termguicolors')
+        end,
+    },
+    {
+        'nvim-treesitter/nvim-treesitter', -- Syntax highlighting, edit and indent
         build = ':TSUpdate',
     },
-    'tpope/vim-sleuth',                -- Detect tabstop and shiftwidth automatically
+    {
+        'folke/todo-comments.nvim', -- Comments highlighting
+        opts = {},
+    },
 
     require('plugins.gitsigns'),       -- Git stuff
     require('plugins.harpoon'),        -- Blazingly fast

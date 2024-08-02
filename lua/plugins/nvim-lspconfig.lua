@@ -1,12 +1,11 @@
 return {
     'neovim/nvim-lspconfig',
     dependencies = {
-        -- Automatically install LSPs and related tools to stdpath for Neovim
-        { 'williamboman/mason.nvim', config = true }, -- Must be loaded before dependants
+        {
+            'williamboman/mason.nvim',
+            opts = {},
+        },
         'williamboman/mason-lspconfig.nvim',
-        'WhoIsSethDaniel/mason-tool-installer.nvim',
-
-        -- Allows extra capabilities provided by nvim-cmp
         'hrsh7th/cmp-nvim-lsp',
     },
     config = function()
@@ -50,13 +49,14 @@ return {
 
         local servers = {
             bashls = {},
-            clangd = {},
             biome = {},
-            pylsp = {},
-            rust_analyzer = {},
+            clangd = {},
+            cssls = {},
+            eslint = {},
             gopls = {},
             html = {},
-            cssls = {},
+            pylsp = {},
+            rust_analyzer = {},
             lua_ls = {
                 settings = {
                     Lua = {
@@ -69,12 +69,10 @@ return {
 
         require('mason').setup()
 
-        local ensure_installed = vim.tbl_keys(servers or {})
-        require('mason-tool-installer').setup({ ensure_installed = ensure_installed })
-
         local lspconfig = require('lspconfig')
 
         require('mason-lspconfig').setup({
+            ensure_installed = vim.tbl_keys(servers or {}),
             handlers = {
                 function(server_name)
                     local server = servers[server_name] or {}
