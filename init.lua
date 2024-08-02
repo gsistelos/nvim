@@ -33,6 +33,7 @@ local plugins = {
     },
     {
         'nvim-lualine/lualine.nvim', -- Status line
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
         opts = {},
     },
     {
@@ -54,6 +55,7 @@ local plugins = {
     },
     {
         'folke/todo-comments.nvim', -- Comments highlighting
+        dependencies = { "nvim-lua/plenary.nvim" },
         opts = {},
     },
 
