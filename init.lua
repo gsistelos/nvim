@@ -46,6 +46,7 @@ local plugins = {
     {
         'norcalli/nvim-colorizer.lua', -- Color highlighting
         init = function()
+            require('colorizer').setup()
             vim.cmd.set('termguicolors')
         end,
     },
