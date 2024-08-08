@@ -41,13 +41,15 @@ local plugins = {
         priority = 9999,    -- Make sure to load this before all the other start plugins
         init = function()
             vim.cmd.colorscheme('rose-pine')
+            -- Transparent background
+            vim.cmd('hi normal guibg=none')
         end,
     },
     {
         'norcalli/nvim-colorizer.lua', -- Color highlighting
         init = function()
-            require('colorizer').setup()
             vim.cmd.set('termguicolors')
+            require('colorizer').setup()
         end,
     },
     {
