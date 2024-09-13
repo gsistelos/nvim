@@ -58,7 +58,6 @@ return {
             html = {},
             pylsp = {},
             rust_analyzer = {},
-            tsserver = {},
             lua_ls = {
                 settings = {
                     Lua = {
