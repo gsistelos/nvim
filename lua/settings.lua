@@ -1,6 +1,8 @@
 vim.opt.number = true
 vim.opt.relativenumber = true
 
+vim.opt.tabstop = 4
+
 vim.opt.undofile = true
 
 vim.opt.mouse = 'a'
@@ -13,7 +15,7 @@ vim.opt.showmode = false
 
 -- Sync clipboard between OS and Neovim
 vim.schedule(function()
-    vim.opt.clipboard = 'unnamedplus'
+	vim.opt.clipboard = 'unnamedplus'
 end)
 
 -- Format with :F
