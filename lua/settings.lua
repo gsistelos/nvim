@@ -7,6 +7,12 @@ vim.opt.undofile = true
 
 vim.opt.mouse = 'a'
 
+-- Line offset from cursor
+vim.opt.scrolloff = 10
+
+-- Highlight cursor line
+vim.opt.cursorline = true
+
 -- Visual whitespaces
 vim.opt.listchars = { tab = '» ', space = '·' }
 

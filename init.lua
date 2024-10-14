@@ -23,6 +23,8 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 local plugins = {
+	'github/copilot.vim',
+
 	{
 		'lewis6991/gitsigns.nvim', -- Git stuff
 		opts = {},
@@ -46,10 +48,10 @@ local plugins = {
 		build = ':TSUpdate',
 	},
 
-	require('plugins.harpoon'), -- Blazingly fast
-	require('plugins.nvim-cmp'), -- Autocomplete
+	require('plugins.harpoon'),     -- Blazingly fast
+	require('plugins.nvim-cmp'),    -- Autocomplete
 	require('plugins.nvim-lspconfig'), -- LSP
-	require('plugins.telescope'), -- Fuzzy finder
+	require('plugins.telescope'),   -- Fuzzy finder
 }
 
 local opts = {}
