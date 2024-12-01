@@ -15,11 +15,6 @@ return {
 				-- [n]ext
 				['<C-n>'] = cmp.mapping.select_next_item(),
 
-				-- [b]ack
-				['<C-b>'] = cmp.mapping.scroll_docs(-4),
-				-- [f]orward
-				['<C-f>'] = cmp.mapping.scroll_docs(4),
-
 				-- [c]ancel
 				['<C-c>'] = cmp.mapping.abort(),
 				-- [a]ccept

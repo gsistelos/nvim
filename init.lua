@@ -36,7 +36,7 @@ local plugins = {
 	},
 	{
 		'rose-pine/neovim', -- Colorscheme
-		priority = 9999, -- Make sure to load this before all the other start plugins
+		priority = 9999, -- Make sure to load before all the other start plugins
 		init = function()
 			vim.cmd.colorscheme('rose-pine')
 			-- Transparent background
@@ -48,10 +48,10 @@ local plugins = {
 		build = ':TSUpdate',
 	},
 
-	require('plugins.harpoon'),     -- Blazingly fast
-	require('plugins.nvim-cmp'),    -- Autocomplete
+	require('plugins.harpoon'), -- Blazingly fast
+	require('plugins.nvim-cmp'), -- Autocomplete
 	require('plugins.nvim-lspconfig'), -- LSP
-	require('plugins.telescope'),   -- Fuzzy finder
+	require('plugins.telescope'), -- Fuzzy finder
 }
 
 local opts = {}

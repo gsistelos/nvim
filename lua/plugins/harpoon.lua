@@ -17,20 +17,20 @@ return {
 		end, { desc = '[h]arpoon [s]how' })
 
 		-- Navigation
-		vim.keymap.set('n', '<leader>h1', function()
+		vim.keymap.set('n', '<leader>1', function()
 			harpoon:list():select(1)
-		end, { desc = '[h]arpoon select [1]' })
+		end, { desc = 'harpoon select [1]' })
 
-		vim.keymap.set('n', '<leader>h2', function()
+		vim.keymap.set('n', '<leader>2', function()
 			harpoon:list():select(2)
-		end, { desc = '[h]arpoon select [2]' })
+		end, { desc = 'harpoon select [2]' })
 
-		vim.keymap.set('n', '<leader>h3', function()
+		vim.keymap.set('n', '<leader>3', function()
 			harpoon:list():select(3)
-		end, { desc = '[h]arpoon select [3]' })
+		end, { desc = 'harpoon select [3]' })
 
-		vim.keymap.set('n', '<leader>h4', function()
+		vim.keymap.set('n', '<leader>4', function()
 			harpoon:list():select(4)
-		end, { desc = '[h]arpoon select [4]' })
+		end, { desc = 'harpoon select [4]' })
 	end,
 }

@@ -19,11 +19,11 @@ sudo apt install git curl wget gcc clang make unzip ripgrep fd-find python3-venv
 Arch based distros:
 
 ```bash
-sudo pacman -S git curl wget gcc clang make unzip ripgrep fd python-virtualenv python-pip
+sudo pacman -S --needed git curl wget gcc clang make unzip ripgrep fd python-virtualenv python-pip
 ```
 
 ### nvm
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | NODE_VERSION=stable bash
+curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | NODE_VERSION=stable bash
 ```

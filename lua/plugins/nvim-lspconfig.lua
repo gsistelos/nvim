@@ -22,24 +22,22 @@ return {
 
 				map('gd', builtin.lsp_definitions, '[g]oto [d]efinition')
 				map('gD', vim.lsp.buf.declaration, '[g]oto [D]eclaration')
-				map('gi', builtin.lsp_implementations, '[g]oto [i]mplementation')
 				map('gr', builtin.lsp_references, '[g]oto [r]eferences')
 				map('gt', builtin.lsp_type_definitions, '[g]oto [t]ype definition')
+				map('gs', builtin.lsp_document_symbols, '[g]oto document [s]ymbols')
 
 				map('<leader>r', vim.lsp.buf.rename, '[r]ename')
 
-				map('<leader>ca', vim.lsp.buf.code_action, '[c]ode [a]ction')
-				map('<leader>ds', builtin.lsp_document_symbols, '[d]ocument [s]ymbols')
-				map('<leader>ws', builtin.lsp_dynamic_workspace_symbols, '[w]orkspace [s]ymbols')
+				map('<leader>a', vim.lsp.buf.code_action, 'code [a]ction')
 
-				-- The following code creates a keymap to toggle inlay hints in your
-				-- code, if the language server you are using supports them
+				-- Create a keymap to toggle inlay hints in your code,
+				-- if the language server you are using supports them
+				-- e.g.: rust_analyzer type hints
 				local client = vim.lsp.get_client_by_id(event.data.client_id)
 				if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
 					map('<leader>th', function()
 						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({
-							bufnr =
-							    event.buf
+							bufnr = event.buf
 						}))
 					end, '[t]oggle inlay [h]ints')
 				end
@@ -82,7 +80,7 @@ return {
 				function(server_name)
 					local server = servers[server_name] or {}
 
-					-- This handles overriding only values explicitly passed
+					-- Override values explicitly passed
 					-- by the server configuration above
 					server.capabilities = vim.tbl_deep_extend('force', {}, capabilities,
 						server.capabilities or {})
