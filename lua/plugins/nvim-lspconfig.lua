@@ -54,11 +54,14 @@ return {
 			biome = {},
 			clangd = {},
 			cssls = {},
+			dockerls = {},
+			docker_compose_language_service = {},
 			eslint = {},
 			gopls = {},
 			html = {},
 			pylsp = {},
 			rust_analyzer = {},
+			terraformls = {},
 			ts_ls = {},
 			lua_ls = {
 				settings = {

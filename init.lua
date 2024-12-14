@@ -35,12 +35,14 @@ local plugins = {
 		opts = {},
 	},
 	{
-		'rose-pine/neovim', -- Colorscheme
+		'tanvirtin/monokai.nvim', -- Colorscheme
 		priority = 9999, -- Make sure to load before all the other start plugins
 		init = function()
-			vim.cmd.colorscheme('rose-pine')
+			vim.cmd.colorscheme('monokai')
 			-- Transparent background
-			vim.cmd('hi normal guibg=none')
+			vim.cmd('hi Normal guibg=none')
+			vim.cmd('hi LineNr guibg=none')
+			vim.cmd('hi SignColumn guibg=none')
 		end,
 	},
 	{

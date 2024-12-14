@@ -11,7 +11,7 @@ vim.opt.mouse = 'a'
 vim.opt.scrolloff = 10
 
 -- Highlight cursor line
-vim.opt.cursorline = true
+-- vim.opt.cursorline = true
 
 -- Visual whitespaces
 vim.opt.listchars = { tab = '» ', space = '·' }
