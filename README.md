@@ -38,13 +38,6 @@ My neovim configuration.
 ## Docker
 
 Run the configuration in a Arch container.
-
-Build the image:
-```sh
-docker image build -t dvim .
-```
-
-Run:
 ```sh
 ./dvim [/path/to/workdir]
 ```

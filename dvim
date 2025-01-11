@@ -5,6 +5,11 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
+if [ -z "$(docker images -q dvim)" ]; then
+    echo "dvim image not found. Building..."
+    docker buildx build -t dvim .
+fi
+
 WORKDIR=$1
 
 WORKDIR_PATH=$(realpath $WORKDIR)
