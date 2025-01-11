@@ -11,20 +11,21 @@ if [ -z "$(docker images -q dvim)" ]; then
 fi
 
 WORKDIR=$1
-
 WORKDIR_PATH=$(realpath $WORKDIR)
-
 WORKDIR_NAME=$(basename $WORKDIR_PATH)
+
+HOME=/home/gsistelos
+VOLUME=$HOME/.docker-volume
 
 SHARE_NVIM_PATH=".local/share/nvim"
 STATE_NVIM_PATH=".local/state/nvim"
 
-mkdir -p ~/.docker-volume/$SHARE_NVIM_PATH
-mkdir -p ~/.docker-volume/$STATE_NVIM_PATH
+mkdir -p $VOLUME/$SHARE_NVIM_PATH
+mkdir -p $VOLUME/$STATE_NVIM_PATH
 
 docker run \
-	-w /root/$WORKDIR_NAME \
-	-v $WORKDIR_PATH:/root/$WORKDIR_NAME \
-	-v ~/.docker-volume/$SHARE_NVIM_PATH:/root/$SHARE_NVIM_PATH \
-	-v ~/.docker-volume/$STATE_NVIM_PATH:/root/$STATE_NVIM_PATH \
+	-w $HOME/$WORKDIR_NAME \
+	-v $WORKDIR_PATH:$HOME/$WORKDIR_NAME \
+	-v $VOLUME/$SHARE_NVIM_PATH:$HOME/$SHARE_NVIM_PATH \
+	-v $VOLUME/$STATE_NVIM_PATH:$HOME/$STATE_NVIM_PATH \
 	-it dvim

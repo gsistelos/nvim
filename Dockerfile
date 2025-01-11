@@ -1,12 +1,18 @@
 FROM archlinux:latest
 
 RUN pacman -Syu --noconfirm
-RUN pacman -S --needed --noconfirm neovim git curl wget gcc clang make unzip ripgrep fd python-virtualenv python-pip
+RUN pacman -S --needed --noconfirm neovim git curl wget unzip make gcc clang ripgrep fd python-virtualenv python-pip
+
+ENV USER=gsistelos
+
+RUN useradd -m $USER
+
+USER $USER
+
+WORKDIR /home/$USER
 
 # nvm
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | NODE_VERSION=stable bash
-
-WORKDIR /root
 
 RUN mkdir -p .config/nvim
 
