@@ -16,7 +16,7 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/master/install.sh | NO
 
 RUN mkdir -p .config/nvim
 
-COPY init.lua .config/nvim
-COPY lua .config/nvim/lua
+COPY ../init.lua .config/nvim
+COPY ../lua .config/nvim/lua
 
 COPY .bashrc .
