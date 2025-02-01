@@ -5,7 +5,8 @@ vim.g.maplocalleader = ' '
 -- Clear highlights
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
-vim.keymap.set('n', '<leader>e', ':Ex<CR>', { desc = '[e]xplore' })
+-- Open vim's builtin file explorer: `Netrw`
+vim.keymap.set('n', '<C-e>', '<cmd>Explore<CR>', { desc = 'Explore' })
 
 -- Toggle visual whitespaces
-vim.keymap.set('n', '<leader>tl', ':set list!<CR>', { desc = '[t]oggle [l]ist' })
+vim.keymap.set('n', '<leader>tw', '<cmd>set list!<CR>', { desc = 'Toggle whitespaces' })

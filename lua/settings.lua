@@ -1,10 +1,12 @@
+-- Show line numbers
 vim.opt.number = true
-vim.opt.relativenumber = true
 
-vim.opt.tabstop = 4
-
+-- Enable undofile
+-- :help 'undofile'
 vim.opt.undofile = true
 
+-- Enable mouse
+-- :help 'mouse'
 vim.opt.mouse = 'a'
 
 -- Line offset from cursor
@@ -20,9 +22,7 @@ vim.opt.listchars = { tab = '» ', space = '·' }
 vim.opt.showmode = false
 
 -- Sync clipboard between OS and Neovim
-vim.schedule(function()
-	vim.opt.clipboard = 'unnamedplus'
-end)
+vim.schedule(function() vim.opt.clipboard = 'unnamedplus' end)
 
 -- Format with :F
 vim.cmd('command! F :lua vim.lsp.buf.format()')

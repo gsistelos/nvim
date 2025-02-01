@@ -20,15 +20,14 @@ return {
 
 				local builtin = require('telescope.builtin')
 
-				map('gd', builtin.lsp_definitions, '[g]oto [d]efinition')
-				map('gD', vim.lsp.buf.declaration, '[g]oto [D]eclaration')
-				map('gr', builtin.lsp_references, '[g]oto [r]eferences')
-				map('gt', builtin.lsp_type_definitions, '[g]oto [t]ype definition')
-				map('gs', builtin.lsp_document_symbols, '[g]oto document [s]ymbols')
+				map('gd', builtin.lsp_definitions, 'Go to definition')
+				map('gD', vim.lsp.buf.declaration, 'Go to declaration')
+				map('gr', builtin.lsp_references, 'Go to references')
+				map('gt', builtin.lsp_type_definitions, 'Go to type definition')
+				map('gs', builtin.lsp_document_symbols, 'Go to document symbols')
 
-				map('<leader>r', vim.lsp.buf.rename, '[r]ename')
-
-				map('<leader>a', vim.lsp.buf.code_action, 'code [a]ction')
+				map('<leader>r', vim.lsp.buf.rename, 'Rename')
+				map('<leader>a', vim.lsp.buf.code_action, 'Code action')
 
 				-- Create a keymap to toggle inlay hints in your code,
 				-- if the language server you are using supports them
@@ -39,7 +38,7 @@ return {
 						vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({
 							bufnr = event.buf
 						}))
-					end, '[t]oggle inlay [h]ints')
+					end, 'Toggle inlay hints')
 				end
 			end,
 		})

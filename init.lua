@@ -1,26 +1,39 @@
-require('settings')
-require('keymaps')
-
 -- Set lazy.nvim path
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
 -- Ensure lazy.nvim is installed
-if not vim.uv.fs_stat(lazypath) then
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+	local lazyrepo = 'https://github.com/folke/lazy.nvim'
+
+	-- Clone lazy.nvim
 	local out = vim.fn.system({
 		'git',
 		'clone',
 		'--filter=blob:none',
-		'https://github.com/folke/lazy.nvim.git',
-		'--branch=stable', -- Latest stable release
-		lazypath
+		'--branch=stable',
+		lazyrepo,
+		lazypath,
 	})
+
 	if vim.v.shell_error ~= 0 then
-		error('Error cloning lazy.nvim:\n' .. out)
+		-- Display a pretty error message
+		vim.api.nvim_echo({
+			{ 'Failed to clone lazy.nvim:\n', 'ErrorMsg' },
+			{ out,                            'WarningMsg' },
+			{ '\nPress any key to exit...' },
+		}, true, {})
+
+		-- Wait for user input before exit
+		vim.fn.getchar()
+		os.exit(1)
 	end
 end
 
 -- Add lazy.nvim to runtimepath
 vim.opt.rtp:prepend(lazypath)
+
+require('settings')
+require('keymaps')
 
 local plugins = {
 	'github/copilot.vim',
@@ -36,9 +49,11 @@ local plugins = {
 	},
 	{
 		'tanvirtin/monokai.nvim', -- Colorscheme
-		priority = 9999, -- Make sure to load before all the other start plugins
+		-- Make sure to load before all the other start plugins
+		lazy = false,
+		priority = 1000,
 		init = function()
-			vim.cmd.colorscheme('monokai')
+			vim.cmd('colorscheme monokai')
 			-- Transparent background
 			vim.cmd('hi Normal guibg=none')
 			vim.cmd('hi LineNr guibg=none')
@@ -46,16 +61,27 @@ local plugins = {
 		end,
 	},
 	{
+		'folke/which-key.nvim',
+		dependencies = { 'nvim-tree/nvim-web-devicons' },
+		event = 'VeryLazy',
+		opts = {
+			spec = {
+				{ '<leader>f', group = 'Find' },
+				{ '<leader>t', group = 'Toggle' },
+			},
+		},
+	},
+	{
 		'nvim-treesitter/nvim-treesitter', -- Syntax highlighting, edit and indent
 		build = ':TSUpdate',
 	},
 
-	require('plugins.harpoon'), -- Blazingly fast
 	require('plugins.nvim-cmp'), -- Autocomplete
 	require('plugins.nvim-lspconfig'), -- LSP
 	require('plugins.telescope'), -- Fuzzy finder
 }
 
-local opts = {}
-
-require('lazy').setup(plugins, opts)
+require('lazy').setup({
+	spec = plugins,
+	checker = { enabled = true },
+})
