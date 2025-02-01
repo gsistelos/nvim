@@ -3,7 +3,7 @@ FROM archlinux:latest
 RUN pacman -Syu --noconfirm
 RUN pacman -S --needed --noconfirm neovim git curl wget unzip make gcc clang ripgrep fd python-virtualenv python-pip
 
-ENV USER=gsistelos
+ARG USER
 
 RUN useradd -m $USER
 
