@@ -39,10 +39,6 @@ local plugins = {
 	'github/copilot.vim',
 
 	{
-		'lewis6991/gitsigns.nvim', -- Git stuff
-		opts = {},
-	},
-	{
 		'nvim-lualine/lualine.nvim', -- Status line
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
 		opts = {},
@@ -66,6 +62,7 @@ local plugins = {
 		event = 'VeryLazy',
 		opts = {
 			spec = {
+				{ '<leader>g', group = 'Git' },
 				{ '<leader>f', group = 'Find' },
 				{ '<leader>t', group = 'Toggle' },
 			},
@@ -76,6 +73,7 @@ local plugins = {
 		build = ':TSUpdate',
 	},
 
+	require('plugins.gitsigns'), -- Git stuff
 	require('plugins.nvim-cmp'), -- Autocomplete
 	require('plugins.nvim-lspconfig'), -- LSP
 	require('plugins.telescope'), -- Fuzzy finder
