@@ -64,6 +64,16 @@ local plugins = {
 		build = ':TSUpdate',
 		-- Install parsers with :TSInstall <language>
 	},
+	{ -- LuaLS configuration
+		'folke/lazydev.nvim',
+		ft = 'lua',
+		opts = {
+			library = {
+				-- Load luvit types when the `vim.uv` word is found
+				{ path = '${3rd}/luv/library', words = { 'vim%.uv' } },
+			},
+		},
+	},
 
 	require('plugins.gitsigns'), -- Git stuff
 	require('plugins.nvim-cmp'), -- Autocomplete
