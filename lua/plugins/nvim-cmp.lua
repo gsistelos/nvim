@@ -7,21 +7,16 @@ return {
 	},
 	config = function()
 		local cmp = require('cmp')
-		cmp.setup({
-			completion = { completeopt = 'menu,menuone,noinsert' },
-			mapping = cmp.mapping.preset.insert({
-				-- [p]revious
-				['<C-p>'] = cmp.mapping.select_prev_item(),
-				-- [n]ext
-				['<C-n>'] = cmp.mapping.select_next_item(),
 
-				-- [c]ancel
+		cmp.setup({
+			mapping = cmp.mapping.preset.insert({
+				['<C-n>'] = cmp.mapping.select_next_item(),
+				['<C-p>'] = cmp.mapping.select_prev_item(),
+
 				['<C-c>'] = cmp.mapping.abort(),
-				-- [a]ccept
 				['<C-a>'] = cmp.mapping.confirm({ select = true }),
 
 				-- Manually trigger a completion from nvim-cmp
-				-- [s]how
 				['<C-s>'] = cmp.mapping.complete(),
 			}),
 			sources = {

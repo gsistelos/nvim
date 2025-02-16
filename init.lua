@@ -36,15 +36,8 @@ require('settings')
 require('keymaps')
 
 local plugins = {
-	'github/copilot.vim',
-
-	{
-		'nvim-lualine/lualine.nvim', -- Status line
-		dependencies = { 'nvim-tree/nvim-web-devicons' },
-		opts = {},
-	},
-	{
-		'tanvirtin/monokai.nvim', -- Colorscheme
+	{ -- Colorscheme
+		'tanvirtin/monokai.nvim',
 		-- Make sure to load before all the other start plugins
 		lazy = false,
 		priority = 1000,
@@ -56,23 +49,18 @@ local plugins = {
 			vim.cmd('hi SignColumn guibg=none')
 		end,
 	},
-	{
-		'folke/which-key.nvim',
+	{ -- Status line
+		'nvim-lualine/lualine.nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
-		event = 'VeryLazy',
-		opts = {
-			spec = {
-				{ '<leader>g', group = 'Git' },
-				{ '<leader>f', group = 'Find' },
-				{ '<leader>t', group = 'Toggle' },
-			},
-		},
+		opts = {},
 	},
-	{
-		'nvim-treesitter/nvim-treesitter', -- Syntax highlighting, edit and indent
+	{ -- Syntax highlighting, edit and indent
+		'nvim-treesitter/nvim-treesitter',
 		build = ':TSUpdate',
+		-- Install parsers with :TSInstall <language>
 	},
 
+	require('plugins.which-key'), -- Keybindings
 	require('plugins.gitsigns'), -- Git stuff
 	require('plugins.nvim-cmp'), -- Autocomplete
 	require('plugins.nvim-lspconfig'), -- LSP

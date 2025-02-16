@@ -27,11 +27,15 @@ return {
 		pcall(telescope.load_extension, 'fzf')
 		pcall(telescope.load_extension, 'ui-select')
 
+		local map = function(keys, func, desc)
+			vim.keymap.set('n', keys, func, { desc = desc })
+		end
+
 		local builtin = require('telescope.builtin')
 
-		vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Find files' })
-		vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Find by grep' })
-		vim.keymap.set('n', '<leader>fp', builtin.oldfiles, { desc = 'Find previous files' })
-		vim.keymap.set('n', '<leader>fd', builtin.diagnostics, { desc = 'Find diagnostics' })
+		map('<leader>ff', builtin.find_files, 'Find files')
+		map('<leader>fg', builtin.live_grep, 'Find by grep')
+		map('<leader>fp', builtin.oldfiles, 'Find previous files')
+		map('<leader>fd', builtin.diagnostics, 'Find diagnostics')
 	end,
 }

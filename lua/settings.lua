@@ -22,7 +22,9 @@ vim.opt.listchars = { tab = '» ', space = '·' }
 vim.opt.showmode = false
 
 -- Sync clipboard between OS and Neovim
-vim.schedule(function() vim.opt.clipboard = 'unnamedplus' end)
+vim.schedule(function()
+	vim.opt.clipboard = 'unnamedplus'
+end)
 
 -- Format with :F
 vim.cmd('command! F :lua vim.lsp.buf.format()')
