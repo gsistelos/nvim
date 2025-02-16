@@ -65,11 +65,11 @@ local plugins = {
 		-- Install parsers with :TSInstall <language>
 	},
 
-	require('plugins.which-key'), -- Keybindings
 	require('plugins.gitsigns'), -- Git stuff
 	require('plugins.nvim-cmp'), -- Autocomplete
 	require('plugins.nvim-lspconfig'), -- LSP
 	require('plugins.telescope'), -- Fuzzy finder
+	require('plugins.which-key'), -- Keybindings
 }
 
 require('lazy').setup({
