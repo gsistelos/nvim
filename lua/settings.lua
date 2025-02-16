@@ -1,6 +1,8 @@
 -- Show line numbers
 vim.opt.number = true
 
+vim.opt.tabstop = 4
+
 -- Enable undofile
 -- :help 'undofile'
 vim.opt.undofile = true

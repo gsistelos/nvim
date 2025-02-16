@@ -1,10 +1,8 @@
 return {
 	'neovim/nvim-lspconfig',
 	dependencies = {
-		{
-			'williamboman/mason.nvim',
-			opts = {},
-		},
+		{ 'j-hui/fidget.nvim',       opts = {} },
+		{ 'williamboman/mason.nvim', opts = {} },
 		'williamboman/mason-lspconfig.nvim',
 		'hrsh7th/cmp-nvim-lsp',
 	},
@@ -15,7 +13,10 @@ return {
 			callback = function(event)
 				-- Function to easily define mappings specific for LSP related items
 				local map = function(keys, func, desc)
-					vim.keymap.set('n', keys, func, { buffer = event.buf, desc = 'LSP: ' .. desc })
+					vim.keymap.set('n', keys, func, {
+						buffer = event.buf,
+						desc = 'LSP: ' .. desc
+					})
 				end
 
 				local builtin = require('telescope.builtin')
@@ -65,14 +66,16 @@ return {
 			lua_ls = {
 				settings = {
 					Lua = {
-						-- Disable the global variable 'vim' warning
-						diagnostics = { globals = { 'vim' } },
+						diagnostics = {
+							-- Disable the global variable 'vim' warning
+							globals = { 'vim' },
+							-- Disable 'missing-fields' warning
+							disable = { 'missing-fields' }
+						},
 					},
 				},
 			},
 		}
-
-		require('mason').setup()
 
 		local lspconfig = require('lspconfig')
 
@@ -84,15 +87,16 @@ return {
 
 					-- Override values explicitly passed
 					-- by the server configuration above
-					server.capabilities = vim.tbl_deep_extend('force', {}, capabilities,
-						server.capabilities or {})
+					server.capabilities = vim.tbl_deep_extend('force', {},
+						capabilities, server.capabilities or {})
 					lspconfig[server_name].setup(server)
 				end,
 			},
 		})
 
-		local function set_filetype(pattern, filetype)
+		local set_filetype = function(pattern, filetype)
 			vim.api.nvim_create_autocmd({ 'BufRead', 'BufNewFile' }, {
+				group = vim.api.nvim_create_augroup('set-filetype', { clear = true }),
 				pattern = pattern,
 				command = 'set filetype=' .. filetype,
 			})
