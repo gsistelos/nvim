@@ -10,22 +10,12 @@ return {
 				return vim.fn.executable('make') == 1
 			end,
 		},
-		'nvim-telescope/telescope-ui-select.nvim',
 	},
 	config = function()
 		local telescope = require('telescope')
 
-		telescope.setup({
-			extensions = {
-				['ui-select'] = {
-					require('telescope.themes').get_dropdown(),
-				},
-			},
-		})
-
-		-- Enable Telescope extensions if they are installed
-		pcall(telescope.load_extension, 'fzf')
-		pcall(telescope.load_extension, 'ui-select')
+		telescope.setup()
+		telescope.load_extension('fzf')
 
 		local map = function(keys, func, desc)
 			vim.keymap.set('n', keys, func, { desc = desc })
