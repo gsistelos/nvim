@@ -37,12 +37,12 @@ require('keymaps')
 
 local plugins = {
 	{ -- Colorscheme
-		'tanvirtin/monokai.nvim',
+		'ellisonleao/gruvbox.nvim',
 		-- Make sure to load before all the other start plugins
 		lazy = false,
 		priority = 1000,
 		init = function()
-			vim.cmd('colorscheme monokai')
+			vim.cmd('colorscheme gruvbox')
 			-- Transparent background
 			vim.cmd('hi Normal guibg=none')
 			vim.cmd('hi LineNr guibg=none')
