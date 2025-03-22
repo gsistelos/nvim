@@ -5,7 +5,7 @@ My neovim configuration.
 1. **Neovim**
     * Debian based distros:
       ```sh
-      sudo curl -fsSLO https://github.com/neovim/neovim/releases/download/stable/nvim.appimage
+      sudo curl -fsSL https://github.com/neovim/neovim/releases/download/stable/nvim-linux-x86_64.appimage -o nvim.appimage
       chmod +x nvim.appimage
       sudo mv nvim.appimage /usr/bin/nvim
       ```
