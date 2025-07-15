@@ -35,20 +35,12 @@ vim.opt.rtp:prepend(lazypath)
 require('settings')
 require('keymaps')
 
+-- Colorscheme
+vim.cmd.colorscheme("retrobox")
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+
 local plugins = {
-	{ -- Colorscheme
-		'ellisonleao/gruvbox.nvim',
-		-- Make sure to load before all the other start plugins
-		lazy = false,
-		priority = 1000,
-		init = function()
-			vim.cmd('colorscheme gruvbox')
-			-- Transparent background
-			vim.cmd('hi Normal guibg=none')
-			vim.cmd('hi LineNr guibg=none')
-			vim.cmd('hi SignColumn guibg=none')
-		end,
-	},
 	{ -- Status line
 		'nvim-lualine/lualine.nvim',
 		dependencies = { 'nvim-tree/nvim-web-devicons' },
