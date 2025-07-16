@@ -32,14 +32,19 @@ check_distro() {
 		echo "${ERROR} /etc/os-release is not a regular file"
 	fi
 
-	if grep -q "ID=arch" /etc/os-release; then
-		DISTRO="arch"
-		echo "${INFO} Running script for Arch distro..."
-	elif grep -q "ID=debian" /etc/os-release; then
-		DISTRO="debian"
-		echo "${INFO} Running script for Debian distro..."
-	else
-		echo "${ERROR} This script only supports Debian and Arch distros"
+	local distros="Arch Ubuntu Debian"
+
+	for distro in ${distros}; do
+		local lowercase_distro=$(echo ${distro} | tr "A-Z" "a-z")
+
+		if grep -q "ID=${lowercase_distro}" /etc/os-release; then
+			DISTRO=${lowercase_distro}
+			echo "${INFO} Running script for ${distro} distro..."
+		fi
+	done
+
+	if [ -z ${DISTRO} ]; then
+		echo "${ERROR} This script only supports Debian, Ubuntu and Arch distros"
 		exit 1
 	fi
 
@@ -81,14 +86,16 @@ install_neovim() {
 			exit 1
 		fi
 	else
+		local app_image="nvim-linux-x86_64.appimage"
+
 		echo "${INFO} Installing neovim..."
-		if ! curl -fLO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.appimage; then
-			echo "${ERROR} Failed to curl nvim-linux-x86_64.appimage"
+		if ! curl -fLO https://github.com/neovim/neovim/releases/latest/download/${app_image}; then
+			echo "${ERROR} Failed to curl ${app_image}"
 			exit 1
 		fi
 
-		chmod +x nvim-linux-x86_64.appimage
-		sudo mv nvim-linux-x86_64.appimage /usr/bin/nvim
+		chmod +x ${app_image}
+		sudo mv ${app_image} /usr/bin/nvim
 	fi
 }
 
