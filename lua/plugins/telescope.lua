@@ -14,7 +14,7 @@ return {
 	config = function()
 		local telescope = require('telescope')
 
-		telescope.setup()
+		telescope.setup({})
 		telescope.load_extension('fzf')
 
 		local map = function(keys, func, desc)

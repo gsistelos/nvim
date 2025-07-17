@@ -36,7 +36,7 @@ require('settings')
 require('keymaps')
 
 -- Colorscheme
-vim.cmd.colorscheme("retrobox")
+vim.cmd.colorscheme("unokai")
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
 
@@ -56,7 +56,7 @@ local plugins = {
 		build = ':TSUpdate',
 		-- Install parsers with :TSInstall <language>
 	},
-	{ -- LuaLS configuration
+	{ -- configures LuaLS for editing Neovim config
 		'folke/lazydev.nvim',
 		ft = 'lua',
 		opts = {

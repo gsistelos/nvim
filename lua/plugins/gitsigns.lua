@@ -3,12 +3,11 @@ return {
 	'lewis6991/gitsigns.nvim',
 	opts = {
 		signcolumn = true,
-		attach_to_untracked = true,
-		-- Highlight line number
-		numhl = true,
+		numhl = true, -- Highlight line number
 		on_attach = function(buf)
 			local gitsigns = require('gitsigns')
 
+			-- Local function to create keymaps
 			local map = function(mode, keys, func, desc)
 				vim.keymap.set(mode, keys, func, {
 					buffer = buf,
@@ -16,25 +15,28 @@ return {
 				})
 			end
 
-			map('n', '<leader>gb', gitsigns.toggle_current_line_blame, 'Git blame')
+			map('n', '<leader>gb', gitsigns.toggle_current_line_blame, 'Toggle line blame')
 
-			map('n', '<leader>gn', gitsigns.next_hunk, 'Git next hunk')
-			map('n', '<leader>gp', gitsigns.prev_hunk, 'Git previous hunk')
+			map('n', '<leader>gn', function()
+				gitsigns.nav_hunk('next')
+			end, 'Jump to next hunk')
 
-			map('n', '<leader>gs', gitsigns.stage_hunk, 'Git toggle stage hunk')
-			map('n', '<leader>gr', gitsigns.reset_hunk, 'Git reset hunk')
+			map('n', '<leader>gp', function()
+				gitsigns.nav_hunk('prev')
+			end, 'Jump to previous hunk')
+
+			map('n', '<leader>gs', gitsigns.stage_hunk, 'Stage/Unstage hunk')
+			map('n', '<leader>gr', gitsigns.reset_hunk, 'Reset hunk')
 
 			map('v', '<leader>gs', function()
 				gitsigns.stage_hunk({ vim.fn.line('.'), vim.fn.line('v') })
-			end, 'Git toggle stage hunk')
+			end, 'Stage/Unstage hunk')
 
 			map('v', '<leader>gr', function()
 				gitsigns.reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
-			end, 'Git reset hunk')
+			end, 'Reset hunk')
 
-			map('n', '<leader>gS', gitsigns.stage_buffer, 'Git stage buffer')
-
-			map('n', '<leader>gd', gitsigns.toggle_deleted, 'Git toggle deleted')
+			map('n', '<leader>gd', gitsigns.preview_hunk, 'Preview hunk')
 		end,
 	},
 }

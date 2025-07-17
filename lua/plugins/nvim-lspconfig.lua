@@ -1,13 +1,12 @@
 return {
 	'neovim/nvim-lspconfig',
 	dependencies = {
-		{ 'j-hui/fidget.nvim',       opts = {} },
 		{ 'williamboman/mason.nvim', opts = {} },
 		'williamboman/mason-lspconfig.nvim',
 		'hrsh7th/cmp-nvim-lsp',
 	},
 	config = function()
-		--  This function gets run when an LSP attaches to a particular buffer
+		--  This function gets run when an LSP attaches to a buffer
 		vim.api.nvim_create_autocmd('LspAttach', {
 			group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
 			callback = function(event)
@@ -49,20 +48,20 @@ return {
 		capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
 		local servers = {
-			asm_lsp = {},
-			bashls = {},
-			biome = {},
-			clangd = {},
-			cssls = {},
-			dockerls = {},
-			docker_compose_language_service = {},
-			eslint = {},
-			gopls = {},
-			html = {},
-			pylsp = {},
-			rust_analyzer = {},
-			terraformls = {},
-			ts_ls = {},
+			-- asm_lsp = {},
+			-- bashls = {},
+			-- biome = {},
+			-- clangd = {},
+			-- cssls = {},
+			-- dockerls = {},
+			-- docker_compose_language_service = {},
+			-- eslint = {},
+			-- gopls = {},
+			-- html = {},
+			-- pylsp = {},
+			-- rust_analyzer = {},
+			-- terraformls = {},
+			-- ts_ls = {},
 			lua_ls = {
 				settings = {
 					Lua = {
@@ -102,7 +101,7 @@ return {
 			})
 		end
 
-		-- Set filetype for docker-compose
+		-- Set filetype for docker-compose files
 		set_filetype({
 			'docker-compose.yml',
 			'docker-compose.yaml',
