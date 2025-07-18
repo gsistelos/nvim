@@ -104,7 +104,6 @@ clone_neovim_config() {
 	echo "${INFO} Cloning neovim configuration..."
 	if ! git clone --depth=1 https://github.com/gsistelos/nvim.git ~/.config/nvim; then
 		echo "${ERROR} Failed to clone neovim configuration"
-		exit 1
 	fi
 }
 

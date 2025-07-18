@@ -13,9 +13,16 @@ vim.opt.mouse = 'a'
 
 -- Line offset from cursor
 vim.opt.scrolloff = 10
+vim.opt.sidescrolloff = 15
+
+-- Disable line wrap
+vim.opt.wrap = false
 
 -- Highlight cursor line
 vim.opt.cursorline = true
+
+-- Show column at 100th position
+vim.opt.colorcolumn = "100"
 
 -- Visual whitespaces
 vim.opt.listchars = { tab = '» ', space = '·' }

@@ -8,7 +8,7 @@ My Neovim configuration.
 
     Run the installation script: `./install.sh`.
 
-3. **Clone configuration**
+2. **Clone configuration**
     ```sh
     git clone --depth=1 https://github.com/gsistelos/nvim.git ~/.config/nvim
     ```
