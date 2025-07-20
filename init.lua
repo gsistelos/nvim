@@ -3,7 +3,7 @@ local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
 
 -- Ensure lazy.nvim is installed
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	local lazyrepo = 'https://github.com/folke/lazy.nvim'
+	local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
 
 	-- Clone lazy.nvim
 	local out = vim.fn.system({
@@ -32,55 +32,21 @@ end
 -- Add lazy.nvim to runtimepath
 vim.opt.rtp:prepend(lazypath)
 
-require('settings')
-require('keymaps')
+-- Load opts
+require('opts')
+-- Load misc
+require('misc')
 
-local plugins = {
-	{ -- Colorscheme
-		'ellisonleao/gruvbox.nvim',
-		-- Make sure to load before all the other start plugins
-		lazy = false,
-		priority = 1000,
-		init = function()
-			vim.cmd.colorscheme("gruvbox")
-			vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-			vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-		end,
-	},
-	{ -- Status line
-		'nvim-lualine/lualine.nvim',
-		dependencies = { 'nvim-tree/nvim-web-devicons' },
-		opts = {},
-	},
-	{ -- Indentation guides, even on blank lines
-		'lukas-reineke/indent-blankline.nvim',
-		main = 'ibl',
-		opts = { scope = { enabled = false } },
-	},
-	{ -- Syntax highlighting, edit and indent
-		'nvim-treesitter/nvim-treesitter',
-		build = ':TSUpdate',
-		-- Install parsers with :TSInstall <language>
-	},
-	{ -- configures LuaLS for editing Neovim config
-		'folke/lazydev.nvim',
-		ft = 'lua',
-		opts = {
-			library = {
-				-- Load luvit types when the `vim.uv` word is found
-				{ path = '${3rd}/luv/library', words = { 'vim%.uv' } },
-			},
-		},
-	},
-
-	require('plugins.gitsigns'), -- Git stuff
-	require('plugins.nvim-cmp'), -- Autocomplete
-	require('plugins.nvim-lspconfig'), -- LSP
-	require('plugins.telescope'), -- Fuzzy finder
-	require('plugins.which-key'), -- Keybindings
-}
+-- Must happen before plugins are loaded (otherwise wrong leader will be used)
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 require('lazy').setup({
-	spec = plugins,
+	-- Automatically import all plugins from 'plugins' directory
+	spec = { import = 'plugins' },
+	-- Check for plugin updates when opening Neovim
 	checker = { enabled = true },
 })
+
+-- Load keymaps
+require('keymaps')

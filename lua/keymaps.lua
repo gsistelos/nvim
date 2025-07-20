@@ -1,12 +1,13 @@
--- Must happen before plugins are loaded (otherwise wrong leader will be used)
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+--- @param lhs string
+--- @param rhs string | function
+--- @param desc string
+local function map(lhs, rhs, desc)
+	vim.keymap.set('n', lhs, rhs, { desc = desc })
+end
 
--- Clear highlights
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+map('<Esc>', '<cmd>nohlsearch<CR>', 'Disable highlight')
 
--- Open vim's builtin file explorer: `Netrw`
-vim.keymap.set('n', '<C-e>', '<cmd>Explore<CR>', { desc = 'Explore' })
+map('<leader>e', '<cmd>Explore<CR>', 'Explore (Netrw)')
+map('<leader>tw', '<cmd>set list!<CR>', 'Toggle visual whitespaces')
 
--- Toggle visual whitespaces
-vim.keymap.set('n', '<leader>tw', '<cmd>set list!<CR>', { desc = 'Toggle whitespaces' })
+map('J', vim.diagnostic.open_float, 'Show diagnostic')
