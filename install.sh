@@ -57,10 +57,10 @@ check_distro() {
 install_packages() {
 	if [ ${DISTRO} = "arch" ]; then
 		UPDATE_PACKAGES="sudo pacman -Syu --noconfirm"
-		INSTALL_PACKAGES="sudo pacman -S --needed --noconfirm git curl wget unzip make gcc clang ripgrep fd python-virtualenv python-pip"
+		INSTALL_PACKAGES="sudo pacman -S --needed --noconfirm base-devel git curl wget unzip make gcc clang ripgrep fd python-virtualenv python-pip"
 	else
 		UPDATE_PACKAGES="sudo apt update && sudo apt upgrade -y"
-		INSTALL_PACKAGES="sudo apt install -y git curl wget unzip make gcc clang ripgrep fd-find python3-venv python3-pip pkg-config libssl-dev"
+		INSTALL_PACKAGES="sudo apt install -y build-essential git curl wget unzip make gcc clang ripgrep fd-find python3-venv python3-pip pkg-config libssl-dev"
 	fi
 
 	echo "${INFO} Updating packages..."
