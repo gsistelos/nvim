@@ -38,13 +38,14 @@ check_distro() {
 		local lowercase_distro=$(echo ${distro} | tr "A-Z" "a-z")
 
 		if grep -q "ID=${lowercase_distro}" /etc/os-release; then
-			DISTRO=${lowercase_distro}
+			DISTRO=${distro}
 			echo "${INFO} Running script for ${distro} distro..."
 		fi
 	done
 
 	if [ -z ${DISTRO} ]; then
-		echo "${ERROR} This script only supports Debian, Ubuntu and Arch distros"
+	    local distros_str=$(echo "$distros" | sed -E 's/ /, /g; s/, ([^,]*)$/ and \1/')
+		echo "${ERROR} This script only supports ${distros_str} distros"
 		exit 1
 	fi
 
@@ -55,10 +56,10 @@ check_distro() {
 
 
 install_packages() {
-	if [ ${DISTRO} = "arch" ]; then
+	if [ ${DISTRO} = "Arch" ]; then
 		UPDATE_PACKAGES="sudo pacman -Syu --noconfirm"
 		INSTALL_PACKAGES="sudo pacman -S --needed --noconfirm base-devel git curl wget unzip make gcc clang ripgrep fd python-virtualenv python-pip"
-	else
+	elif [ "$DISTRO" = "Ubuntu" ] || [ "$DISTRO" = "Debian" ]; then
 		UPDATE_PACKAGES="sudo apt update && sudo apt upgrade -y"
 		INSTALL_PACKAGES="sudo apt install -y build-essential git curl wget unzip make gcc clang ripgrep fd-find python3-venv python3-pip pkg-config libssl-dev"
 	fi
