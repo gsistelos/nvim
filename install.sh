@@ -30,6 +30,7 @@ yn_question() {
 check_distro() {
 	if [ ! -f /etc/os-release ]; then
 		echo "${ERROR} /etc/os-release is not a regular file"
+		exit 1
 	fi
 
 	local distros="Arch Ubuntu Debian"
@@ -81,12 +82,12 @@ install_packages() {
 install_neovim() {
 	echo "${INFO} Installing neovim..."
 
-	if [ ${DISTRO} = "arch" ]; then
+	if [ ${DISTRO} = "Arch" ]; then
 		if ! sudo pacman -S --needed --noconfirm neovim; then
 			echo "${ERROR} Failed to install neovim"
 			exit 1
 		fi
-	else
+	elif [ "$DISTRO" = "Ubuntu" ] || [ "$DISTRO" = "Debian" ]; then
 		local app_image="nvim-linux-x86_64.appimage"
 
 		echo "${INFO} Installing neovim..."
