@@ -18,7 +18,7 @@ local function config()
 	map('<leader>fp', builtin.oldfiles, 'Find previous files')
 	map('<leader>fd', builtin.diagnostics, 'Find diagnostics')
 
-	map('<leader>gr', builtin.lsp_definitions, 'Go to definitions')
+	map('<leader>gd', builtin.lsp_definitions, 'Go to definitions')
 	map('<leader>gr', builtin.lsp_references, 'Go to references')
 end
 

@@ -2,14 +2,14 @@ local function config()
 	local cmp = require('cmp')
 
 	local mapping = {
-		['<C-j>'] = cmp.mapping.select_next_item(),
-		['<C-k>'] = cmp.mapping.select_prev_item(),
+		['<C-n>'] = cmp.mapping.select_next_item(),
+		['<C-p>'] = cmp.mapping.select_prev_item(),
 
 		['<C-c>'] = cmp.mapping.abort(),
 		['<C-a>'] = cmp.mapping.confirm({ select = true }),
 
 		-- Manually trigger a completion from nvim-cmp
-		['<C-s>'] = cmp.mapping.complete(),
+		['<C-space>'] = cmp.mapping.complete(),
 	}
 
 	local sources = {

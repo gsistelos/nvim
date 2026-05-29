@@ -22,7 +22,7 @@ local function on_attach(buf)
 	end
 
 	map('n', '<leader>gb', gitsigns.toggle_current_line_blame, 'Toggle line blame')
-	map('n', '<leader>gd', gitsigns.preview_hunk, 'Preview hunk')
+	map('n', '<leader>gd', gitsigns.preview_hunk, 'Diff hunk')
 
 	map('n', '<leader>gs', gitsigns.stage_hunk, 'Stage/Unstage hunk')
 	map('v', '<leader>gs', function()

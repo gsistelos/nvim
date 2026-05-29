@@ -1,15 +1,7 @@
 vim.cmd('command! F :lua vim.lsp.buf.format()')
 vim.cmd('command! W :exec "F" | w')
 
---- @param lhs string
---- @param rhs string | function
---- @param desc string
-local function map(lhs, rhs, desc)
-	vim.keymap.set('v', lhs, rhs, { desc = desc })
-end
-
-map('<', '<gv', 'Indent left and reselect')
-map('>', '>gv', 'Indent right and reselect')
+vim.cmd.colorscheme('retrobox')
 
 --- @param pattern string | string[]
 --- @param filetype string
